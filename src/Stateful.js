@@ -17,7 +17,7 @@ export default class Stateful extends React.Component {
 
     this.state = {
       state,
-      data: props.compute(state),
+      data: props.compute({ state }),
     };
   }
 
