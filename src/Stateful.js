@@ -29,7 +29,7 @@ export default class Stateful extends React.Component {
     this._handle = watch(() => {
       const { state } = this.state;
       this.setState({
-        data: this._watchableCompute.get()(state),
+        data: this._watchableCompute.get()({ state }),
       });
     });
   }
@@ -53,8 +53,8 @@ export default class Stateful extends React.Component {
 
 Stateful.defaultProps = {
   /**
-   * Default implementation marks dependency on all properties
+   * Default implementation marks dependency on all state properties and returns state
    */
-  compute: state => (Object.values(state), state),
+  compute: ({ state }) => (Object.values(state), state),
   initialState: {},
 };
